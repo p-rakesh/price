@@ -13,8 +13,8 @@ ARTIFACTS_DIR.mkdir(exist_ok=True)
 
 # Data Parameters
 TICKER = "AAPL"
-START_DATE = datetime(2023, 1, 1).strftime('%Y-%m-%d')
-END_DATE = datetime(2026, 1, 1).strftime('%Y-%m-%d')  # Historical baseline up to recent full year
+START_DATE = "2020-01-01"
+END_DATE = "2026-01-01"  # Historical baseline up to recent full year
 
 # Model Parameters
 TARGET_COL = "Target"

@@ -4,6 +4,8 @@ import pandas as pd
 import yfinance as yf
 import config
 import time
+print(config.START_DATE, config.END_DATE)
+
 
 # Setup basic logging for standalone execution
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
@@ -17,9 +19,10 @@ class DataLoader:
 
     def fetch_data(self) -> pd.DataFrame:
         """Downloads historical stock data from Yahoo Finance."""
-        logger.info(f"Fetching data for {self.ticker} from {self.start_date} to {self.end_date}...")
+        # logger.info(f"Fetching data for {self.ticker} from {self.start_date} to {self.end_date}...")
         for attempt in range(3):  # Retry mechanism
             try:
+                # print(self.start_date, self.end_date)
                 df = yf.download(self.ticker, start=self.start_date, end=self.end_date)
                 print(df.head())
                 if df.empty:
@@ -49,7 +52,7 @@ if __name__ == "__main__":
     # Test execution of the data loader
     loader = DataLoader(
         ticker=config.TICKER, 
-        start_date=config.START_DATE, 
+        start_date= config.START_DATE, 
         end_date=config.END_DATE
     )
     raw_df = loader.fetch_data()
